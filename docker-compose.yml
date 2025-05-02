@@ -1,0 +1,29 @@
+networks:
+  backend:
+
+services:
+  postgres:
+    image: postgres:latest
+    ports:
+      - "5432:5432"
+    volumes:
+      - .:/docker-entrypoint-initdb.d
+    env_file:
+      - .env
+    networks:
+      - backend
+
+  app:
+    build: .
+    ports:
+      - "8000:80"
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_HOST: ${POSTGRES_HOST}
+      POSTGRES_PORT: ${POSTGRES_PORT}
+    networks:
+      - backend
+    depends_on:
+      - postgres
