@@ -1,0 +1,152 @@
+@BASE_URL = http://localhost:8000/api/v1
+
+###
+
+# Регистрация пользователей
+
+POST {{BASE_URL}}/user
+Content-Type: application/json
+
+{
+  "name": "admin",
+  "password": "pwd",
+  "role": "admin"
+}
+
+###
+
+POST {{BASE_URL}}/user
+Content-Type: application/json
+
+{
+  "name": "doshamine",
+  "password": "pwd"
+}
+
+###
+
+POST {{BASE_URL}}/user
+Content-Type: application/json
+
+{
+  "name": "dashwer",
+  "password": "pwd"
+}
+
+###
+
+# Вход под разными пользователями
+
+POST {{BASE_URL}}/login
+Content-Type: application/json
+
+{
+  "name": "admin",
+  "password": "pwd"
+}
+
+###
+
+POST {{BASE_URL}}/login
+Content-Type: application/json
+
+{
+  "name": "doshamine",
+  "password": "pwd"
+}
+
+###
+
+POST {{BASE_URL}}/login
+Content-Type: application/json
+
+{
+  "name": "dashwer",
+  "password": "pwd"
+}
+
+###
+
+# Действия, доступные только для авторизованных пользователей
+
+PATCH {{BASE_URL}}/user/2
+Content-Type: application/json
+x-token: 9d004edc-852e-4472-aa83-e5d80b2bdaf1
+
+{
+  "password": "123"
+}
+
+###
+
+DELETE {{BASE_URL}}/user/3
+Content-Type: application/json
+x-token: ac8031fb-3751-4f44-90d4-3f0b57f544d0
+
+###
+
+POST {{BASE_URL}}/advertisement
+Content-Type: application/json
+x-token: 1b4800ee-7b87-4cbf-a695-456c9cb27df6
+
+{
+  "title": "Срочно",
+  "description": "Продаю",
+  "price": 10.9,
+  "author": "Кеша"
+}
+
+###
+
+PATCH {{BASE_URL}}/advertisement/2
+Content-Type: application/json
+x-token: 67c93aa7-3c77-4b0b-9c3a-4005b49e60d0
+
+{
+  "price": 1.9,
+  "author": "Саня"
+}
+
+###
+
+DELETE {{BASE_URL}}/advertisement/3
+Content-Type: application/json
+x-token: 1b4800ee-7b87-4cbf-a695-456c9cb27df6
+
+###
+
+POST {{BASE_URL}}/advertisement
+Content-Type: application/json
+x-token: 67c93aa7-3c77-4b0b-9c3a-4005b49e60d0
+
+{
+  "title": "Несрочно",
+  "description": "Тоже продаю",
+  "price": 100.9,
+  "author": "Иннокентий"
+}
+
+###
+
+# Действия, доступные для неавторизованных пользователей
+
+GET {{BASE_URL}}/user/1
+Content-Type: application/json
+
+###
+
+GET {{BASE_URL}}/advertisement/2
+Content-Type: application/json
+
+###
+
+GET {{BASE_URL}}/advertisement
+Content-Type: application/json
+
+{
+  "title": "Срочно",
+  "user_id": 1
+}
+
+###
+
