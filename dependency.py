@@ -9,11 +9,13 @@ from config import TOKEN_TTL_SEC
 from models import Session, Token
 from typing import Annotated
 
+
 async def get_session() -> AsyncSession:
     async with Session() as session:
         yield session
 
 SessionDependency = Annotated[AsyncSession, Depends(get_session, use_cache=True)]
+
 
 async def get_token(
         x_token: Annotated[uuid.UUID, Header()], session: SessionDependency

@@ -10,6 +10,7 @@ from custom_type import ROLE
 engine = create_async_engine(config.PG_DSN)
 Session = async_sessionmaker(bind=engine, expire_on_commit=False)
 
+
 class Base(DeclarativeBase, AsyncAttrs):
     @property
     def id_dict(self):
@@ -42,6 +43,7 @@ class Advertisement(Base):
 
 class Token(Base):
     __tablename__ = "token"
+
     id: Mapped[int] = mapped_column(Integer, primary_key=True)
     token: Mapped[uuid.UUID] = mapped_column(
         UUID, unique=True, server_default=func.gen_random_uuid()
@@ -59,6 +61,7 @@ class Token(Base):
 
 class User(Base):
     __tablename__ = "user"
+
     id: Mapped[int] = mapped_column(Integer, primary_key=True)
     name: Mapped[str] = mapped_column(String, unique=True)
     password: Mapped[str] = mapped_column(String)
@@ -74,7 +77,10 @@ class User(Base):
 
     @property
     def dict(self):
-        return {"id": self.id, "name": self.name}
+        return {"id": self.id,
+                "name": self.name,
+                "role": self.role}
+
 
 ORM_OBJ = Advertisement | Token | User
 ORM_CLS = type[Advertisement] | type[Token] | type[User]

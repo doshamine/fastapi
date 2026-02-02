@@ -15,7 +15,7 @@ Content-Type: application/json
 
 ###
 
-POST {{BASE_URL}}/user
+POST {{BASE_URL}}/user/
 Content-Type: application/json
 
 {
@@ -25,7 +25,7 @@ Content-Type: application/json
 
 ###
 
-POST {{BASE_URL}}/user
+POST {{BASE_URL}}/user/
 Content-Type: application/json
 
 {
@@ -37,7 +37,7 @@ Content-Type: application/json
 
 # Вход под разными пользователями
 
-POST {{BASE_URL}}/login
+POST {{BASE_URL}}/login/
 Content-Type: application/json
 
 {
@@ -47,7 +47,7 @@ Content-Type: application/json
 
 ###
 
-POST {{BASE_URL}}/login
+POST {{BASE_URL}}/login/
 Content-Type: application/json
 
 {
@@ -57,7 +57,7 @@ Content-Type: application/json
 
 ###
 
-POST {{BASE_URL}}/login
+POST {{BASE_URL}}/login/
 Content-Type: application/json
 
 {
@@ -71,7 +71,7 @@ Content-Type: application/json
 
 PATCH {{BASE_URL}}/user/2
 Content-Type: application/json
-x-token: 9d004edc-852e-4472-aa83-e5d80b2bdaf1
+x-token: 5b98e035-cdb1-48dc-82ee-3bc3a020f9a2
 
 {
   "password": "123"
@@ -81,13 +81,13 @@ x-token: 9d004edc-852e-4472-aa83-e5d80b2bdaf1
 
 DELETE {{BASE_URL}}/user/3
 Content-Type: application/json
-x-token: ac8031fb-3751-4f44-90d4-3f0b57f544d0
+x-token: ec7c42ed-d0f1-449e-9d56-581d384e55d3
 
 ###
 
-POST {{BASE_URL}}/advertisement
+POST {{BASE_URL}}/advertisement/
 Content-Type: application/json
-x-token: 1b4800ee-7b87-4cbf-a695-456c9cb27df6
+x-token: 5b98e035-cdb1-48dc-82ee-3bc3a020f9a2
 
 {
   "title": "Срочно",
@@ -98,9 +98,9 @@ x-token: 1b4800ee-7b87-4cbf-a695-456c9cb27df6
 
 ###
 
-PATCH {{BASE_URL}}/advertisement/2
+PATCH {{BASE_URL}}/advertisement/1
 Content-Type: application/json
-x-token: 67c93aa7-3c77-4b0b-9c3a-4005b49e60d0
+x-token: 8d657015-4487-48f2-b031-2b3f3c44555d
 
 {
   "price": 1.9,
@@ -109,15 +109,15 @@ x-token: 67c93aa7-3c77-4b0b-9c3a-4005b49e60d0
 
 ###
 
-DELETE {{BASE_URL}}/advertisement/3
+DELETE {{BASE_URL}}/advertisement/2
 Content-Type: application/json
-x-token: 1b4800ee-7b87-4cbf-a695-456c9cb27df6
+x-token: 8d657015-4487-48f2-b031-2b3f3c44555d
 
 ###
 
-POST {{BASE_URL}}/advertisement
+POST {{BASE_URL}}/advertisement/
 Content-Type: application/json
-x-token: 67c93aa7-3c77-4b0b-9c3a-4005b49e60d0
+x-token: 8d657015-4487-48f2-b031-2b3f3c44555d
 
 {
   "title": "Несрочно",
@@ -135,17 +135,17 @@ Content-Type: application/json
 
 ###
 
-GET {{BASE_URL}}/advertisement/2
+GET {{BASE_URL}}/advertisement/1
 Content-Type: application/json
 
 ###
 
-GET {{BASE_URL}}/advertisement
+GET {{BASE_URL}}/advertisement/
 Content-Type: application/json
 
 {
   "title": "Срочно",
-  "user_id": 1
+  "author": "Саня"
 }
 
 ###
